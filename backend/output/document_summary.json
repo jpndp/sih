@@ -1,16 +1,44 @@
 {
-  "document_type": "Error: All API calls failed. Please check your API keys and network connection.",
-  "overall_summary": "Error: All API calls failed. Please check your API keys and network connection.",
-  "page_summaries": {
-    "1": "Error: All API calls failed. Please check your API keys and network connection."
-  },
+  "document_type": "Resume/CV",
+  "overall_summary": "### Comprehensive Summary of Document\n\n#### **Personal Information**\n- **Name:** Ishpreet Singh  \n- **Location:** New Delhi, India  \n- **Contact:**  \n  - Phone: 9811101611  \n  - Email: ishpreet@outlook.in  \n  - LinkedIn: [linkedin.com/in/ishpreet404](https://linkedin.com/in/ishpreet404)  \n  - GitHub: [github.com/ishpreet404](https://github.com/ishpreet404)  \n\n---\n\n#### **Professional Summary**\n- Full Stack Developer with over 1 year of experience specializing in **React.js** applications.\n- Key accomplishments:\n  - Created an **emergency response system** that reduced response time by 35% for over 500 users.\n  - Developed an **AI-powered mental health platform** with 92% classification accuracy.\n- Career Goal: Seeking a **Software Engineer** position to build scalable web applications.\n\n---\n\n#### **Technical Skills**\n- **Programming Languages:** JavaScript, Go, Java, C++, Python  \n- **Frontend:** React.js, React Hooks, Material-UI  \n- **Cloud Technologies:** AWS (EC2, S3, Lambda, RDS, IAM)  \n- **DevOps & Infrastructure as Code (IaC):** Docker, Kubernetes (EKS), CI/CD  \n- **Backend Frameworks:** Express.js, Gin  \n- **Tools:** Git, Scikit-learn  \n\n---\n\n#### **Professional Experience**\n- **Frontend Developer Intern**  \n  - **Company:** SmartPreps EdTech (Remote)  \n  - **Duration:** May 2025 - June 2025  \n  - **Key Contributions:**\n    - Built the company’s first **React.js web application** from scratch, establishing its online presence.\n    - Developed a reusable **component library** for scalable development.\n    - Implemented a **mobile-first responsive design** for seamless cross-platform accessibility.\n\n---\n\n#### **Key Projects**\n1. **AidLink - Emergency Response System**  \n   - **Technologies:** React.js, Python, Arduino, LoRa  \n   - **Duration:** September 2024 - December 2024  \n   - **Key Features:**\n     - Designed a **network-independent emergency beacon system** using Arduino Nano, SX1278 LoRa module, and NEO-6M GPS for disaster scenarios.\n     - Ensured reliable distress signal propagation with **dual-channel redundancy** (LoRa transmission and Morse code encoding).\n     - Developed a **React.js web interface** with real-time GPS visualization, integrated with APRS.fi for global tracking.\n\n2. **Zenify - Mental Health Platform**  \n   - **Technologies:** React.js, FastAPI, OpenAI API, Scikit-learn  \n   - **Duration:** January 2025 - March 2025  \n   - **Key Features:**\n     - Built an **AI-powered mental health support system** with suicide risk detection (92% accuracy) using TF-IDF vectorization and Logistic Regression.\n     - Integrated OpenAI GPT and Gemini APIs for empathetic response generation.\n     - Implemented a **Retrieval Augmented Generation (RAG) pipeline** for knowledge retrieval and generative models.\n     - Developed a full-stack application with features like **JWT authentication**, mood tracking, journal functionality, and GDPR/HIPAA-compliant audit logging.\n\n---\n\n#### **Education**\n- **Degree:** Bachelor of Technology in Computer Science Engineering  \n- **Institution:** Guru Gobind Singh Indraprastha University, New Delhi  \n- **Duration:** September 2023 - July 2027  \n- **GPA:** 8.05/10.0  \n\n---\n\n#### **Achievements and Certifications**\n- **Hackwave 2025:**  \n  - Won **1st place** among 300+ teams and a $1,000 prize for a crisis response dashboard.  \n- **IEEE Hackathon 2024:**  \n  - Reached **semi-finals**, ranking in the top 1% of 2,000+ participants.  \n- **Competitive Programming:**  \n  - Solved **100+ algorithmic problems** on platforms like LeetCode and GeeksforGeeks (GFG).  \n\n---\n\n### **Summary Highlights**\n- Ishpreet Singh is a skilled **Full Stack Developer** with expertise in **React.js**, **AI-powered applications**, and **cloud technologies**.\n- Demonstrated strong project execution with impactful solutions like **AidLink** (emergency response system) and **Zenify** (mental health platform).\n- Proven academic and professional excellence with notable achievements in hackathons and competitive programming.\n- Seeking opportunities to leverage his technical expertise in building scalable and impactful web applications.",
   "key_information": {
-    "names_titles": [],
-    "dates_periods": [],
+    "names": [
+      "Retrieval Augmented",
+      "React Hooks",
+      "Guru Gobind",
+      "Key Projects",
+      "Personal Information",
+      "Key Features",
+      "Software Engineer",
+      "Cloud Technologies",
+      "Arduino Nano",
+      "Professional Summary",
+      "Career Goal",
+      "Technical Skills",
+      "Emergency Response",
+      "Frontend Developer",
+      "Logistic Regression",
+      "Key Contributions",
+      "Computer Science",
+      "Mental Health",
+      "New Delhi",
+      "Singh Indraprastha",
+      "Comprehensive Summary",
+      "Ishpreet Singh",
+      "Summary Highlights",
+      "Professional Experience",
+      "Competitive Programming",
+      "Full Stack",
+      "Backend Frameworks",
+      "Programming Languages"
+    ],
+    "dates": [],
+    "organizations": [],
     "locations": [],
-    "contacts": [],
-    "numbers_stats": [],
-    "key_terms": []
+    "contact_info": [
+      "9811101611",
+      "ishpreet@outlook.in"
+    ]
   },
   "metadata": {
     "total_pages": 1,

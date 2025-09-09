@@ -1,12 +1,98 @@
-DOCUMENT ANALYSIS SUMMARY
-==================================================
-
-Document Type: Error: All API calls failed. Please check your API keys and network connection.
+Document Type: Resume/CV
 
 Overall Summary:
-Error: All API calls failed. Please check your API keys and network connection.
+### Comprehensive Summary of Document
+
+#### **Personal Information**
+- **Name:** Ishpreet Singh  
+- **Location:** New Delhi, India  
+- **Contact:**  
+  - Phone: 9811101611  
+  - Email: ishpreet@outlook.in  
+  - LinkedIn: [linkedin.com/in/ishpreet404](https://linkedin.com/in/ishpreet404)  
+  - GitHub: [github.com/ishpreet404](https://github.com/ishpreet404)  
+
+---
+
+#### **Professional Summary**
+- Full Stack Developer with over 1 year of experience specializing in **React.js** applications.
+- Key accomplishments:
+  - Created an **emergency response system** that reduced response time by 35% for over 500 users.
+  - Developed an **AI-powered mental health platform** with 92% classification accuracy.
+- Career Goal: Seeking a **Software Engineer** position to build scalable web applications.
+
+---
+
+#### **Technical Skills**
+- **Programming Languages:** JavaScript, Go, Java, C++, Python  
+- **Frontend:** React.js, React Hooks, Material-UI  
+- **Cloud Technologies:** AWS (EC2, S3, Lambda, RDS, IAM)  
+- **DevOps & Infrastructure as Code (IaC):** Docker, Kubernetes (EKS), CI/CD  
+- **Backend Frameworks:** Express.js, Gin  
+- **Tools:** Git, Scikit-learn  
+
+---
+
+#### **Professional Experience**
+- **Frontend Developer Intern**  
+  - **Company:** SmartPreps EdTech (Remote)  
+  - **Duration:** May 2025 - June 2025  
+  - **Key Contributions:**
+    - Built the company’s first **React.js web application** from scratch, establishing its online presence.
+    - Developed a reusable **component library** for scalable development.
+    - Implemented a **mobile-first responsive design** for seamless cross-platform accessibility.
+
+---
+
+#### **Key Projects**
+1. **AidLink - Emergency Response System**  
+   - **Technologies:** React.js, Python, Arduino, LoRa  
+   - **Duration:** September 2024 - December 2024  
+   - **Key Features:**
+     - Designed a **network-independent emergency beacon system** using Arduino Nano, SX1278 LoRa module, and NEO-6M GPS for disaster scenarios.
+     - Ensured reliable distress signal propagation with **dual-channel redundancy** (LoRa transmission and Morse code encoding).
+     - Developed a **React.js web interface** with real-time GPS visualization, integrated with APRS.fi for global tracking.
+
+2. **Zenify - Mental Health Platform**  
+   - **Technologies:** React.js, FastAPI, OpenAI API, Scikit-learn  
+   - **Duration:** January 2025 - March 2025  
+   - **Key Features:**
+     - Built an **AI-powered mental health support system** with suicide risk detection (92% accuracy) using TF-IDF vectorization and Logistic Regression.
+     - Integrated OpenAI GPT and Gemini APIs for empathetic response generation.
+     - Implemented a **Retrieval Augmented Generation (RAG) pipeline** for knowledge retrieval and generative models.
+     - Developed a full-stack application with features like **JWT authentication**, mood tracking, journal functionality, and GDPR/HIPAA-compliant audit logging.
+
+---
+
+#### **Education**
+- **Degree:** Bachelor of Technology in Computer Science Engineering  
+- **Institution:** Guru Gobind Singh Indraprastha University, New Delhi  
+- **Duration:** September 2023 - July 2027  
+- **GPA:** 8.05/10.0  
+
+---
+
+#### **Achievements and Certifications**
+- **Hackwave 2025:**  
+  - Won **1st place** among 300+ teams and a $1,000 prize for a crisis response dashboard.  
+- **IEEE Hackathon 2024:**  
+  - Reached **semi-finals**, ranking in the top 1% of 2,000+ participants.  
+- **Competitive Programming:**  
+  - Solved **100+ algorithmic problems** on platforms like LeetCode and GeeksforGeeks (GFG).  
+
+---
+
+### **Summary Highlights**
+- Ishpreet Singh is a skilled **Full Stack Developer** with expertise in **React.js**, **AI-powered applications**, and **cloud technologies**.
+- Demonstrated strong project execution with impactful solutions like **AidLink** (emergency response system) and **Zenify** (mental health platform).
+- Proven academic and professional excellence with notable achievements in hackathons and competitive programming.
+- Seeking opportunities to leverage his technical expertise in building scalable and impactful web applications.
 
 Key Information:
+NAMES: Retrieval Augmented, React Hooks, Guru Gobind, Key Projects, Personal Information, Key Features, Software Engineer, Cloud Technologies, Arduino Nano, Professional Summary, Career Goal, Technical Skills, Emergency Response, Frontend Developer, Logistic Regression, Key Contributions, Computer Science, Mental Health, New Delhi, Singh Indraprastha, Comprehensive Summary, Ishpreet Singh, Summary Highlights, Professional Experience, Competitive Programming, Full Stack, Backend Frameworks, Programming Languages
+CONTACT INFO: 9811101611, ishpreet@outlook.in
 
-Page-by-Page Summaries:
-  Page 1: Error: All API calls failed. Please check your API keys and network connection.
+Metadata:
+Total Pages: 1
+Total Characters: 3085
+Languages Detected: en
