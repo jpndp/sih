@@ -33,27 +33,34 @@ def create_document_summary(page_texts: Dict[int, Dict], combined_text: str, out
             api_key=token
         )
 
-        # Prepare the content for summarization
-        content = f"Document Content:\n{combined_text}\n\nPlease provide a comprehensive summary of this document."
+        # Estimate token count (rough approximation: ~4 characters per token)
+        estimated_tokens = len(combined_text) // 4
+        max_tokens = int(os.getenv("MAX_CHUNK_TOKENS", "5000"))  # Configurable chunk size
 
-        # Create the chat completion request
-        response = client.chat.completions.create(
-            messages=[
-                {
-                    "role": "system",
-                    "content": "You are a helpful assistant specialized in document analysis and summarization. Provide structured summaries with key information extraction."
-                },
-                {
-                    "role": "user",
-                    "content": content
-                }
-            ],
-            model=os.getenv("GITHUB_MODELS_MODEL", "openai/gpt-4o"),
-            max_tokens=2000,
-            temperature=0.3
-        )
+        if estimated_tokens > max_tokens:
+            # Document is too large, use chunking approach
+            print(f"Document too large ({estimated_tokens} tokens), using chunking approach...")
+            summary_text = summarize_large_document(client, combined_text, max_tokens)
+        else:
+            # Document fits in one request
+            content = f"Document Content:\n{combined_text}\n\nPlease provide a comprehensive summary of this document."
 
-        summary_text = response.choices[0].message.content or ""
+            response = client.chat.completions.create(
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "You are a helpful assistant specialized in document analysis and summarization. Provide structured summaries with key information extraction."
+                    },
+                    {
+                        "role": "user",
+                        "content": content
+                    }
+                ],
+                model=os.getenv("GITHUB_MODELS_MODEL", "openai/gpt-4o"),
+                max_tokens=2000,
+                temperature=0.3
+            )
+            summary_text = response.choices[0].message.content or ""
 
         # Extract document type and key information
         document_type = detect_document_type(combined_text)
@@ -68,6 +75,7 @@ def create_document_summary(page_texts: Dict[int, Dict], combined_text: str, out
         metadata = {
             "total_pages": len(page_texts),
             "total_characters": len(combined_text),
+            "estimated_tokens": estimated_tokens,
             "languages_detected": languages
         }
 
@@ -95,6 +103,7 @@ def create_document_summary(page_texts: Dict[int, Dict], combined_text: str, out
         txt_content += "\nMetadata:\n"
         txt_content += f"Total Pages: {metadata['total_pages']}\n"
         txt_content += f"Total Characters: {metadata['total_characters']}\n"
+        txt_content += f"Estimated Tokens: {metadata['estimated_tokens']}\n"
         txt_content += f"Languages Detected: {', '.join(metadata['languages_detected'])}\n"
 
         with open(txt_path, 'w', encoding='utf-8') as f:
@@ -107,6 +116,115 @@ def create_document_summary(page_texts: Dict[int, Dict], combined_text: str, out
         return {
             "error": f"Failed to generate summary: {str(error)}"
         }
+
+def summarize_large_document(client: OpenAI, text: str, max_chunk_tokens: int) -> str:
+    """
+    Summarize a large document by chunking it into smaller pieces
+
+    Args:
+        client: OpenAI client instance
+        text: Full document text
+        max_chunk_tokens: Maximum tokens per chunk
+
+    Returns:
+        Combined summary of all chunks
+    """
+    import time
+
+    # Split text into chunks based on character count (rough token estimation)
+    chunk_size = max_chunk_tokens * 4  # ~4 chars per token
+    chunks = []
+
+    # Split by paragraphs first to maintain coherence
+    paragraphs = text.split('\n\n')
+    current_chunk = ""
+    current_size = 0
+
+    for para in paragraphs:
+        para_size = len(para) // 4  # Estimate tokens
+
+        if current_size + para_size > max_chunk_tokens and current_chunk:
+            chunks.append(current_chunk.strip())
+            current_chunk = para
+            current_size = para_size
+        else:
+            current_chunk += "\n\n" + para if current_chunk else para
+            current_size += para_size
+
+    if current_chunk:
+        chunks.append(current_chunk.strip())
+
+    print(f"Split document into {len(chunks)} chunks for summarization")
+
+    # Summarize each chunk with rate limiting
+    chunk_summaries = []
+    for i, chunk in enumerate(chunks):
+        try:
+            content = f"Document Section {i+1}:\n{chunk}\n\nPlease summarize this section of the document."
+
+            response = client.chat.completions.create(
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "You are a helpful assistant. Summarize this section of a document concisely while preserving key information."
+                    },
+                    {
+                        "role": "user",
+                        "content": content
+                    }
+                ],
+                model=os.getenv("GITHUB_MODELS_MODEL", "openai/gpt-4o"),
+                max_tokens=1000,
+                temperature=0.3
+            )
+
+            chunk_summary = response.choices[0].message.content or ""
+            chunk_summaries.append(f"Section {i+1} Summary:\n{chunk_summary}")
+            print(f"Summarized chunk {i+1}/{len(chunks)}")
+
+            # Add delay between requests to avoid rate limits
+            if i < len(chunks) - 1:  # Don't delay after the last chunk
+                delay = int(os.getenv("CHUNK_DELAY_SECONDS", "3"))
+                time.sleep(delay)  # Configurable delay between requests
+
+        except Exception as e:
+            print(f"Error summarizing chunk {i+1}: {e}")
+            chunk_summaries.append(f"Section {i+1}: [Error processing this section: {str(e)}]")
+
+            # If rate limited, wait longer before continuing
+            if "429" in str(e) or "rate" in str(e).lower():
+                retry_delay = int(os.getenv("RATE_LIMIT_RETRY_DELAY", "30"))
+                print(f"Rate limit detected, waiting {retry_delay} seconds before continuing...")
+                time.sleep(retry_delay)
+
+    # Combine all chunk summaries into a final summary
+    combined_summaries = "\n\n".join(chunk_summaries)
+
+    try:
+        final_content = f"Individual Section Summaries:\n{combined_summaries}\n\nPlease provide a comprehensive final summary that combines all these section summaries into a coherent document overview."
+
+        response = client.chat.completions.create(
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are a helpful assistant specialized in document analysis. Combine these section summaries into a comprehensive, well-structured final summary."
+                },
+                {
+                    "role": "user",
+                    "content": final_content
+                }
+            ],
+            model=os.getenv("GITHUB_MODELS_MODEL", "openai/gpt-4o"),
+            max_tokens=2000,
+            temperature=0.3
+        )
+
+        final_summary = response.choices[0].message.content or ""
+        return final_summary
+
+    except Exception as e:
+        print(f"Error creating final summary: {e}")
+        return f"Document Summary (Chunked Processing):\n\n{combined_summaries}"
 
 def detect_document_type(text: str) -> str:
     """

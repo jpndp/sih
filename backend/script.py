@@ -4,7 +4,7 @@ import load_env  # Load environment variables from .env file
 import os
 
 # Set up paths
-pdf_path = os.path.join(os.getcwd(), "IshpreetResume.pdf")
+pdf_path = os.path.join(os.getcwd(), "MALAYALAM.pdf")
 output_dir = os.path.join(os.getcwd(), "output")
 
 # Create output directory if it doesn't exist

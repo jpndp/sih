@@ -1,50 +1,43 @@
 [p1]
-Ishpreet Singh
-New Delhi, India | 9811101611 | ishpreet@outlook.in | linkedin.com/in/ishpreet404 | github.com/ishpreet404
-PROFESSIONAL SUMMARY
-Full Stack Developer with 1+ years experience building React.js applications. Created emergency response system that
-reduced response time by 35% for 500+ users. Developed AI-powered mental health platform with 92% classification accuracy.
-Seeking Software Engineer position to build scalable web applications.
-TECHNICAL SKILLS
-• Languages: JavaScript,Go,Java C++,Python
-• Frontend: React.js, React Hooks, Material-UI
-• Cloud: AWS (EC2, S3, Lambda, RDS, IAM)
-• DevOps & IaC: Docker, Kubernetes (EKS), CI/CD
-• Backend: Express.js , Gin
-• Tools: Git, Scikit-learn
-PROFESSIONAL EXPERIENCE
-Frontend Developer Intern — SmartPreps EdTech — Remote — May 2025 - June 2025
-• Developed company’s first React.js web application from scratch, establishing initial online presence and user engage-
-ment platform
-• Built comprehensive component library with reusable elements, creating scalable foundation for future development
-• Implemented mobile-first responsive design supporting multiple device types, enabling seamless cross-platform accessi-
-bility
-KEY PROJECTS
-AidLink - Emergency Response System — React.js, Python, Arduino, LoRa — September 2024 - December 2024
-GitHub
-—
-Live Demo
-• Engineered network-independent emergency beacon system using Arduino Nano, SX1278 LoRa module, and NEO-6M
-GPS for disaster scenarios where traditional infrastructure fails
-• Implemented dual-channel redundancy with LoRa (long-range) transmission and Morse code encoding via handy radio,
-ensuring reliable distress signal propagation in harsh conditions
-• Built React.js web interface with real-time GPS visualization updating every 2 seconds from JSON data stream,
-integrated with APRS.fi for global amateur radio tracking network visibility
-Zenify - Mental Health Platform — React.js, FastAPI, OpenAI API, Scikit-learn — January 2025 - March 2025
-GitHub
-—
-Live Demo
-• Developed AI-powered mental health support system using TF-IDF vectorization and Logistic Regression classifier for
-real-time suicide risk detection, integrated with OpenAI GPT and Gemini APIs for empathetic response generation
-• Implemented Retrieval Augmented Generation (RAG) pipeline combining knowledge retrieval with generative models,
-alongside keyword screening algorithms for initial content flagging and risk assessment
-• Built full-stack application with FastAPI backend and React admin dashboard featuring JWT authentication, mood
-tracking with sentiment analysis, journal functionality, and compliance-ready audit logging for GDPR/HIPAA require-
-ments
-EDUCATION
-Bachelor of Technology - Computer Science Engineering
-Guru Gobind Singh Indraprastha University, New Delhi — September 2023 - July 2027 — GPA: 8.05/10.0
-ACHIEVEMENTS AND CERTIFICATIONS
-• Hackwave 2025: Won 1st place among 300+ teams and $1,000 prize for crisis response dashboard
-• IEEE Hackathon 2024: Reached semi-finals ranking in top 1% of 2,000+ participants
-• LeetCode,GFG: Solved 100+ algorithmic problems
+ദേശീയ വിേയാഭ്യാസ നയം  2020 
+ 
+2 
+ഭ്ാഗം III. ശ്രദ്ധ ദകന്ദ്രീകരിക്കുന്ന മെ് പ്രധ്ാന ദമഖലകൾ 
+20 
+ന്റപ്രാഫഷണൽ വിേയാഭ്യാസം 
+69 
+21 
+മുതിർന്നവരുന്റട വിേയാഭ്യാസവം ആജീവനാന്ത േഠനവം 
+71 
+22 
+ഇന്തയയിന്റല വിവിധ് ഭ്ാഷകൾ, കലകൾ, സംസ്കാരം എന്നിവയന്റട ഉന്നമനം 
+73 
+23 
+സാദേതിക വിേയയന്റട ഉേദയാഗവം ഏകീകരണവം 
+78 
+24 
+ഓൺശലൻ, ഡിജിെൽ വിേയാഭ്യാസം: സാദേതിക വിേയയന്റട നയായമായ 
+ഉേദയാഗം ഉറപ്പാക്കും 
+81 
+ഭ്ാഗം IV. നടപ്പിലാക്കുന്ന രീതി 
+25 
+ദകന്ദ്ര വിേയാഭ്യാസ ഉേദേശക ദ ാർഡിന്റെ ശാക്തീകരണം 
+84 
+26 
+ധ്നസഹായം: എല്ലാവർക്കും ഗുണദമന്മയള്ളതും, താങ്ങാനാകുന്നതുമായ 
+വിേയാഭ്യാസം 
+85 
+27 
+നടപ്പിലാക്കൽ  
+86 
+ 
+ഉേദയാഗിച്ച ചുരുന്റക്കഴുത്തുകളുന്റട േട്ടിക 
+88 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
