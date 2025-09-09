@@ -1,0 +1,22 @@
+{
+  "document_type": "Error: All API calls failed. Please check your API keys and network connection.",
+  "overall_summary": "Error: All API calls failed. Please check your API keys and network connection.",
+  "page_summaries": {
+    "1": "Error: All API calls failed. Please check your API keys and network connection."
+  },
+  "key_information": {
+    "names_titles": [],
+    "dates_periods": [],
+    "locations": [],
+    "contacts": [],
+    "numbers_stats": [],
+    "key_terms": []
+  },
+  "metadata": {
+    "total_pages": 1,
+    "total_characters": 3085,
+    "languages_detected": [
+      "en"
+    ]
+  }
+}

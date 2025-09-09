@@ -1,0 +1,12 @@
+DOCUMENT ANALYSIS SUMMARY
+==================================================
+
+Document Type: Error: All API calls failed. Please check your API keys and network connection.
+
+Overall Summary:
+Error: All API calls failed. Please check your API keys and network connection.
+
+Key Information:
+
+Page-by-Page Summaries:
+  Page 1: Error: All API calls failed. Please check your API keys and network connection.
