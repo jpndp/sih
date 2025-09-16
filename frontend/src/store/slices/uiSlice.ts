@@ -1,5 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+export interface AlertType {
+  type: 'error' | 'warning' | 'info' | 'success';
+  message: string;
+  autoHide?: boolean;
+  duration?: number;
+}
+
 interface UIState {
   theme: 'light' | 'dark' | 'system';
   sidebarOpen: boolean;
@@ -11,6 +18,8 @@ interface UIState {
   currentPage: string;
   breadcrumbs: Array<{ label: string; path: string }>;
   pageTitle: string;
+  alert: AlertType | null;
+  searchOpen: boolean;
 }
 
 const initialState: UIState = {
@@ -24,12 +33,21 @@ const initialState: UIState = {
   currentPage: 'dashboard',
   breadcrumbs: [{ label: 'Dashboard', path: '/' }],
   pageTitle: 'Dashboard',
+  alert: null,
+  searchOpen: false,
 };
 
 export const uiSlice = createSlice({
   name: 'ui',
   initialState,
   reducers: {
+    setAlert: (state, action: PayloadAction<AlertType>) => {
+      state.alert = action.payload;
+      // Auto-hide is handled in the showAlert thunk
+    },
+    clearAlert: (state) => {
+      state.alert = null;
+    },
     setTheme: (state, action: PayloadAction<'light' | 'dark' | 'system'>) => {
       state.theme = action.payload;
       localStorage.setItem('kmrl_theme', action.payload);
@@ -76,10 +94,15 @@ export const uiSlice = createSlice({
         document.title = `${action.payload} - KMRL Document Processing System`;
       }
     },
+    setSearchOpen: (state, action: PayloadAction<boolean>) => {
+      state.searchOpen = action.payload;
+    },
   },
 });
 
 export const {
+  setAlert,
+  clearAlert,
   setTheme,
   toggleSidebar,
   setSidebarOpen,
@@ -94,4 +117,20 @@ export const {
   setCurrentPage,
   setBreadcrumbs,
   setPageTitle,
+  setSearchOpen,
 } = uiSlice.actions;
+
+// Helper function for showing alerts
+export const showAlert = (
+  message: string,
+  type: 'success' | 'error' | 'warning' | 'info' = 'info',
+  autoHide = true,
+  duration = 5000
+) => {
+  return setAlert({
+    message,
+    type,
+    autoHide,
+    duration,
+  });
+};

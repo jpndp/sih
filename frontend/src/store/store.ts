@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { authSlice } from './slices/authSlice';
+import authReducer from './slices/authSlice';
 import { documentsSlice } from './slices/documentsSlice';
 import { dashboardSlice } from './slices/dashboardSlice';
 import { complianceSlice } from './slices/complianceSlice';
@@ -8,7 +8,7 @@ import { uiSlice } from './slices/uiSlice';
 
 export const store = configureStore({
   reducer: {
-    auth: authSlice.reducer,
+    auth: authReducer,
     documents: documentsSlice.reducer,
     dashboard: dashboardSlice.reducer,
     compliance: complianceSlice.reducer,

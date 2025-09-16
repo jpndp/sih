@@ -24,7 +24,9 @@ import { Info, Train, Email, Lock, Visibility, VisibilityOff } from '@mui/icons-
 
 export const LoginForm: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { loading, error } = useSelector((state: RootState) => state.auth);
+  const auth = useSelector((state: RootState) => state.auth ?? { loading: false, error: null }) as { loading: boolean; error: string | null };
+  const loading = auth.loading;
+  const error = auth.error;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -95,6 +97,7 @@ export const LoginForm: React.FC = () => {
                 KMRL
               </Typography>
               <Typography variant="subtitle1">Document Processing System</Typography>
+
             </Box>
 
             <CardContent sx={{ p: 4 }}>
@@ -172,9 +175,9 @@ export const LoginForm: React.FC = () => {
               <Box sx={{ mt: 3 }}>
                 <Box display="flex" alignItems="center" gap={1}>
                   <Typography variant="body2" color="text.secondary">
-                    Demo Credentials
+                    Available Test Emails
                   </Typography>
-                  <Tooltip title="Show demo credentials">
+                  <Tooltip title="Show available test emails">
                     <IconButton size="small" onClick={() => setDemoOpen(!demoOpen)}>
                       <Info fontSize="small" />
                     </IconButton>
@@ -184,11 +187,26 @@ export const LoginForm: React.FC = () => {
                 <Collapse in={demoOpen}>
                   <Box mt={1} p={2} bgcolor="grey.50" borderRadius={1}>
                     <Typography variant="body2">
-                      <strong>Admin:</strong> admin@kmrl.co.in / admin
+                      Available test emails:
                     </Typography>
-                    <Typography variant="body2">
-                      <strong>Engineer:</strong> engineer@kmrl.co.in / engineer
-                    </Typography>
+                    <Box sx={{ mt: 1 }}>
+                      <Button 
+                        size="small" 
+                        variant="outlined" 
+                        onClick={() => setEmail('admin@kmrl.co.in')}
+                        sx={{ mr: 1, mb: 1 }}
+                      >
+                        Admin Email
+                      </Button>
+                      <Button 
+                        size="small" 
+                        variant="outlined" 
+                        onClick={() => setEmail('engineer@kmrl.co.in')}
+                        sx={{ mb: 1 }}
+                      >
+                        Engineer Email
+                      </Button>
+                    </Box>
                   </Box>
                 </Collapse>
               </Box>

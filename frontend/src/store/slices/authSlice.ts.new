@@ -27,6 +27,7 @@ const initialState: AuthState = {
   error: null,
 };
 
+// Authentication with backend API
 export const loginAsync = createAsyncThunk(
   'auth/login',
   async ({ email, password }: { email: string; password: string }) => {
@@ -48,17 +49,16 @@ export const loginAsync = createAsyncThunk(
       }
 
       const { access_token } = await response.json();
-      localStorage.setItem('kmrl_token', access_token);
 
       // Get user details
       const userResponse = await fetch('http://localhost:8000/api/me', {
         headers: {
-          'Authorization': `Bearer ${access_token}`,
-        },
+          'Authorization': `Bearer ${access_token}`
+        }
       });
 
       if (!userResponse.ok) {
-        throw new Error('Failed to fetch user details');
+        throw new Error('Failed to get user details');
       }
 
       const userData = await userResponse.json();
@@ -76,10 +76,8 @@ export const loginAsync = createAsyncThunk(
         token: access_token,
       };
     } catch (error) {
-      // Fallback to mock data for development
+      // Fallback to mock data for demo
       if (email === 'admin@kmrl.co.in' && password === 'admin@123') {
-        const mockToken = 'mock-jwt-token-admin';
-        localStorage.setItem('kmrl_token', mockToken);
         return {
           user: {
             id: '1',
@@ -91,11 +89,9 @@ export const loginAsync = createAsyncThunk(
             avatar: '/avatars/admin.jpg',
             lastLogin: new Date().toISOString(),
           },
-          token: mockToken,
+          token: 'mock-jwt-token-admin',
         };
       } else if (email === 'engineer@kmrl.co.in' && password === 'engineer') {
-        const mockToken = 'mock-jwt-token-engineer';
-        localStorage.setItem('kmrl_token', mockToken);
         return {
           user: {
             id: '2',
@@ -107,7 +103,7 @@ export const loginAsync = createAsyncThunk(
             avatar: '/avatars/engineer.jpg',
             lastLogin: new Date().toISOString(),
           },
-          token: mockToken,
+          token: 'mock-jwt-token-engineer',
         };
       }
       throw error instanceof Error ? error : new Error('Login failed');
@@ -115,15 +111,12 @@ export const loginAsync = createAsyncThunk(
   }
 );
 
-export const logoutAsync = createAsyncThunk(
-  'auth/logout',
-  async () => {
-    localStorage.removeItem('kmrl_token');
-    return null;
-  }
-);
+export const logoutAsync = createAsyncThunk('auth/logout', async () => {
+  localStorage.removeItem('kmrl_token');
+  return null;
+});
 
-const authSlice = createSlice({
+export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
@@ -147,18 +140,16 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isAuthenticated = true;
-        state.error = null;
+        localStorage.setItem('kmrl_token', action.payload.token);
       })
       .addCase(loginAsync.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'Login failed';
-        state.isAuthenticated = false;
       })
       .addCase(logoutAsync.fulfilled, (state) => {
         state.user = null;
         state.token = null;
         state.isAuthenticated = false;
-        state.error = null;
       });
   },
 });

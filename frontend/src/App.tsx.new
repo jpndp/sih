@@ -1,0 +1,39 @@
+import React, { Suspense } from 'react';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { kmrlTheme } from './theme/kmrlTheme';
+import { AuthProvider } from './components/auth/AuthProvider';
+import { NotificationProvider } from './components/notifications/NotificationProvider';
+import { Dashboard } from './components/dashboard/Dashboard';
+import { Providers } from './app/providers';
+import Sidebar from './components/layout/sidebar';
+import FileUpload from './components/upload/FileUpload';
+import { ErrorBoundary } from './components/error/ErrorBoundary';
+import { LoadingSpinner } from './components/ui/LoadingSpinner';
+
+const App = () => {
+  return (
+    <ErrorBoundary>
+      <Providers>
+        <ThemeProvider theme={kmrlTheme}>
+          <CssBaseline />
+          <AuthProvider>
+            <NotificationProvider>
+              <div style={{ display: 'flex' }}>
+                <Sidebar />
+                <main style={{ marginLeft: 240, padding: '20px', width: '100%' }}>
+                  <Suspense fallback={<LoadingSpinner />}>
+                    <FileUpload />
+                    <Dashboard />
+                  </Suspense>
+                </main>
+              </div>
+            </NotificationProvider>
+          </AuthProvider>
+        </ThemeProvider>
+      </Providers>
+    </ErrorBoundary>
+  );
+};
+
+export default App;
